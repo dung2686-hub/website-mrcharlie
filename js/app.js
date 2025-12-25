@@ -7,7 +7,8 @@ let allProducts = [];
 
 async function fetchAndRenderHero() {
     try {
-        const response = await fetch(PRODUCTS_URL);
+        // Cache Busting: Add timestamp to force fresh data load
+        const response = await fetch(PRODUCTS_URL + '?v=' + new Date().getTime());
         if (!response.ok) throw new Error("Failed to load products");
 
         const data = await response.json();
