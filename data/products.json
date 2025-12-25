@@ -2,7 +2,7 @@
     "products": [
         {
             "name": "Lịch Âm Dương",
-            "icon": "assets/logos/screenshot_app.png",
+            "icon": "assets/logos/lichamduong_icon.png",
             "usage": "App Windows đơn giản giúp ghi chú & nhắc việc hàng ngày theo lịch Âm Dương.",
             "goodFor": "Người Việt Nam, làm việc văn phòng, cần tra cứu lịch âm.",
             "badFor": "Người dùng Mac/Linux (chỉ hỗ trợ Windows).",
@@ -10,7 +10,7 @@
         },
         {
             "name": "Flow Auto_Runner",
-            "icon": "assets/logos/flow_runner_icon.png",
+            "icon": "assets/logos/flowautorunner_icon.png",
             "usage": "Tool tự động hóa quy trình workflow (Auto-Runner).",
             "goodFor": "Dân MMO, Automation, Tiết kiệm thời gian.",
             "badFor": "Người thích làm thủ công.",
