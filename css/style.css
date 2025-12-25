@@ -653,20 +653,38 @@ footer {
     position: relative;
     max-width: 800px;
     width: 100%;
+    display: flex;
+    /* Center the image if it's smaller than container */
+    justify-content: center;
 }
 
 .app-showcase-img {
-    width: 100%;
+    max-width: 100%;
+    /* Ensure it fits container width */
+    width: auto;
+    /* Prevent upscaling small images (gọn gàng) */
+    max-height: 60vh;
+    /* Limit height to 60% of viewport (tránh tràn dọc) */
     height: auto;
+    display: block;
+
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 212, 255, 0.1);
     transition: transform 0.3s;
+    object-fit: contain;
 }
 
 .app-showcase-img:hover {
     transform: scale(1.02);
     border-color: var(--color-tech-blue);
+}
+
+/* Mobile Tweak: Reduce max-height further */
+@media (max-width: 768px) {
+    .app-showcase-img {
+        max-height: 50vh;
+    }
 }
 
 /* Glow Background */
