@@ -647,6 +647,34 @@ footer {
     width: 100%;
 }
 
+.footer-contacts {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+    color: #ccc;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-item i {
+    color: var(--color-tiger-orange);
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .footer-contacts {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
 /* Screenshot Showcase */
 .app-screenshot-container {
     margin: 30px 0 40px;
