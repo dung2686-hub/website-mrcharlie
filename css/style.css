@@ -708,3 +708,32 @@ footer {
         padding: 15px 20px;
     }
 }
+
+/* App Switcher (Minimalist) */
+.app-switcher {
+    margin-top: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    z-index: 100;
+}
+
+.switcher-btn {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin: 0 5px;
+    padding: 2px 5px;
+    transition: all 0.3s;
+}
+
+.switcher-btn:hover {
+    color: var(--color-tech-blue);
+    text-shadow: 0 0 5px var(--color-tech-blue);
+}
+
+.switcher-btn.active {
+    color: var(--color-tiger-orange);
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(255, 159, 28, 0.6);
+}
