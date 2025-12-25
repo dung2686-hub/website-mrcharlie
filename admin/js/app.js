@@ -147,32 +147,23 @@ function switchTab(tab) {
 }
 
 // --- Helper Functions ---
-// --- Helper Functions ---
 function resolveImageUrl(path) {
     if (!path) return '';
 
-    // 1. External URLs: Keep as is
+    // 1. External URLs
     if (path.startsWith('http')) return path;
 
-    // 2. Standardize Path: Ensure it starts with '/'
+    // 2. Standardize to Root Path (e.g. /assets/logos/...)
     let cleanPath = path.trim();
+
+    // Remove ./ or ../ if present
     if (cleanPath.startsWith('./')) cleanPath = cleanPath.substring(1);
-    // Remove "assets/" prefix if it's already included in the base folder logic of some systems? No, keep it.
-    // Ensure leading slash
+    if (cleanPath.startsWith('../')) cleanPath = cleanPath.substring(2);
+
+    // Ensure leading slash for Domain Root
     if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
 
-    // 3. Admin Optimization: Use Raw GitHub URL to bypass Pages cache
-    const owner = sessionStorage.getItem('gh_owner');
-    const repo = sessionStorage.getItem('gh_repo');
-    const branch = sessionStorage.getItem('gh_branch') || 'main';
-
-    if (owner && repo) {
-        // Raw URL format: https://raw.githubusercontent.com/{owner}/{repo}/{branch}/{path_without_leading_slash}
-        const rawPath = cleanPath.substring(1); // Remove leading '/'
-        return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${rawPath}`;
-    }
-
-    return cleanPath; // Fallback
+    return cleanPath;
 }
 
 function renderList(filterText = '') {
