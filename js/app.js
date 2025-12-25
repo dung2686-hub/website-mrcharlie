@@ -37,6 +37,7 @@ function switchApp(index) {
     const description = document.getElementById('hero-description');
     const image = document.getElementById('hero-image');
     const cta = document.getElementById('hero-cta');
+    const note = document.getElementById('hero-note'); // New element
 
     if (headline) {
         // Use 'usage' as the main catchy headline (Squeeze Style) 
@@ -61,13 +62,23 @@ function switchApp(index) {
 
     if (cta) {
         cta.href = app.link;
-        // Text Logic
-        if (app.link.includes('zalo')) {
-            cta.innerHTML = `👉 Vào nhóm Zalo nhận App`;
-        } else {
-            cta.innerHTML = `👉 Xem Chi Tiết`;
-        }
+        // Default Strategy: Always "Download Windows App"
+        cta.innerHTML = `👉 TẢI APP WINDOWS`;
         cta.style.display = 'inline-flex';
+    }
+
+    if (note) {
+        // Use 'badFor' field for the Note (Repurposing existing field)
+        if (app.badFor) {
+            note.innerHTML = `(* ${app.badFor})`;
+            note.style.display = 'block';
+            note.style.fontSize = '0.9rem';
+            note.style.marginTop = '10px';
+            note.style.fontStyle = 'italic';
+            note.style.opacity = '0.7';
+        } else {
+            note.style.display = 'none';
+        }
     }
 
     // Update Active Link State
