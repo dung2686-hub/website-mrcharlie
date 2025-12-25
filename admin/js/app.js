@@ -300,6 +300,17 @@ async function saveCurrentItem() {
     saveChanges(); // Auto-save to JSON after update
 }
 
+saveChanges(); // Auto-save to JSON after update
+}
+
+function updateSaveBtnStatus(text, disabled = true) {
+    const saveBtn = document.querySelector('.modal-footer .btn-tiger:not(.btn-delete)');
+    if (saveBtn) {
+        saveBtn.textContent = text;
+        saveBtn.disabled = disabled;
+    }
+}
+
 function deleteCurrentItem() {
     if (appState.editingId === null) return;
     if (!confirm('Bạn có chắc muốn xóa mục này?')) return;
