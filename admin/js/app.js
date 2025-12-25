@@ -364,3 +364,27 @@ function handleIconUpload(input) {
     // Reset file input
     input.value = '';
 }
+
+function handleExeUpload(input) {
+    const file = input.files[0];
+    if (!file) return;
+
+    // Max size 99MB check
+    if (file.size > 99 * 1024 * 1024) {
+        alert('⚠️ File quá lớn (>99MB). GitHub API giới hạn 100MB!');
+        input.value = '';
+        return;
+    }
+
+    appState.pendingExeFile = file;
+    // Visually update the Link input to show pending status
+    const linkInput = document.querySelector('input[name="link"]');
+    if (linkInput) linkInput.value = `📦 ${file.name} (Chưa upload - Bấm Lưu để up)`;
+
+    // Reset input so same file can be selected again if needed (though unlikely)
+    // input.value = ''; // actually don't reset, or do? Standard is not to reset unless we handled it.
+    // But we need to keep it in pendingExeFile. 
+    // If we reset input.value, the file is gone from DOM input but we have it in memory variable? 
+    // Yes, appState.pendingExeFile = file keeps the reference.
+    input.value = '';
+}
