@@ -99,8 +99,11 @@ class GitHubClient {
 
                     // Generate filename with timestamp to avoid conflicts
                     const timestamp = Date.now();
-                    const extension = file.name.split('.').pop();
-                    const filename = `${timestamp}.${extension}`;
+                    const nameParts = file.name.split('.');
+                    const extension = nameParts.pop();
+                    const name = nameParts.join('.');
+                    // Keep original name + timestamp for uniqueness
+                    const filename = `${name}_${timestamp}.${extension}`;
                     const path = `${folder}/${filename}`;
 
                     // Upload to GitHub
