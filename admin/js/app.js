@@ -187,11 +187,16 @@ function renderList(filterText = '') {
             ? `<img src="${iconSrc}" onerror="this.outerHTML='<span style=\\'font-size:2rem\\'>⚠️</span>'" style="width:50px; height:50px; object-fit:contain; background:rgba(255,255,255,0.1); border-radius:5px;">`
             : `<div style="font-size:2rem;">${item.icon || '📦'}</div>`;
 
+        // Visibility Style
+        const isHidden = item.isVisible === false;
+        const opacity = isHidden ? '0.5' : '1';
+        const visibilityIcon = isHidden ? '<i class="fa-solid fa-eye-slash" title="Đang Ẩn" style="color:#ff4444; margin-right:10px;"></i>' : '';
+
         return `
-        <div class="glass-card tool-card-detailed admin-item" onclick="editItem(${realIndex})" style="display:flex; align-items:center; gap:20px; cursor:pointer;">
+        <div class="glass-card tool-card-detailed admin-item" onclick="editItem(${realIndex})" style="display:flex; align-items:center; gap:20px; cursor:pointer; opacity:${opacity};">
             <div class="item-icon">${iconHtml}</div>
             <div class="item-info" style="flex:1;">
-                <h3 style="margin:0; color:var(--color-tiger-orange);">${item.name}</h3>
+                <h3 style="margin:0; color:var(--color-tiger-orange);">${visibilityIcon}${item.name}</h3>
                 <p style="margin:5px 0; font-size:0.9rem; color:#ccc;">${item.usage || 'Chưa có mô tả'}</p>
             </div>
             <div class="item-action">
@@ -229,7 +234,13 @@ function editItem(index) {
     inputs['usage'].value = item.usage || '';
     inputs['goodFor'].value = item.goodFor || '';
     inputs['badFor'].value = item.badFor || '';
+    inputs['usage'].value = item.usage || '';
+    inputs['goodFor'].value = item.goodFor || '';
+    inputs['badFor'].value = item.badFor || '';
     inputs['link'].value = item.link || '';
+
+    // Visibility (Default true if undefined)
+    inputs['isVisible'].checked = item.isVisible !== false;
 
     previewIcon(item.icon);
 
@@ -284,7 +295,8 @@ async function saveCurrentItem() {
         usage: inputs['usage'].value,
         goodFor: inputs['goodFor'].value,
         badFor: inputs['badFor'].value,
-        link: linkPath
+        link: linkPath,
+        isVisible: inputs['isVisible'].checked // Save visibility state
     };
 
     const targetArray = appState.currentTab === 'products' ? appState.products : appState.tools;

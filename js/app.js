@@ -12,7 +12,8 @@ async function fetchAndRenderHero() {
         if (!response.ok) throw new Error("Failed to load products");
 
         const data = await response.json();
-        allProducts = data.products || [];
+        // Filter out hidden products (isVisible must not be false)
+        allProducts = (data.products || []).filter(p => p.isVisible !== false);
 
         if (allProducts.length === 0) return;
 
