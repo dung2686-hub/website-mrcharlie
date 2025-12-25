@@ -70,7 +70,7 @@ function switchApp(index) {
     if (note) {
         // Use 'badFor' field for the Note (Repurposing existing field)
         if (app.badFor) {
-            note.innerHTML = `(* ${app.badFor})`;
+            note.innerHTML = app.badFor;
             note.style.display = 'block';
             note.style.fontSize = '0.9rem';
             note.style.marginTop = '10px';
