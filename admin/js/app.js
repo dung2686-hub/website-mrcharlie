@@ -147,6 +147,7 @@ function switchTab(tab) {
 }
 
 // --- Helper Functions ---
+// --- Helper Functions ---
 function resolveImageUrl(path) {
     if (!path) return '';
 
@@ -154,10 +155,10 @@ function resolveImageUrl(path) {
     if (path.startsWith('http')) return path;
 
     // 2. Standardize Path: Ensure it starts with '/'
-    // This handles both legacy data "assets/..." and new data "/assets/..."
-    // Also handles accidental "../" prefix if any
-    let cleanPath = path;
-    if (cleanPath.startsWith('../')) cleanPath = cleanPath.substring(2); // remove ..
+    let cleanPath = path.trim();
+    if (cleanPath.startsWith('./')) cleanPath = cleanPath.substring(1);
+    // Remove "assets/" prefix if it's already included in the base folder logic of some systems? No, keep it.
+    // Ensure leading slash
     if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
 
     // 3. Admin Optimization: Use Raw GitHub URL to bypass Pages cache
