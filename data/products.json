@@ -1,20 +1,20 @@
 {
-    "products": [
-        {
-            "name": "Lịch Âm Dương",
-            "icon": "assets/logos/lichamduong_icon.png",
-            "usage": "App mình làm để dùng hằng ngày trên Windows.<br>Có Lịch Âm Dương, ghi chú và nhắc việc.",
-            "goodFor": "Đây là bản thử nghiệm app Windows giúp ghi chú và nhắc việc hàng ngày.<br>Không hứa hẹn kết quả, chỉ chia sẻ quá trình.<br>Ai muốn dùng thử thì vào nhóm Zalo.",
-            "badFor": "Không dành cho tất cả mọi người.",
-            "link": "https://zalo.me/g/fnzwet194"
-        },
-        {
-            "name": "Flow Auto_Runner",
-            "icon": "assets/logos/flowautorunner_icon.png",
-            "usage": "Tool tự động hóa quy trình workflow (Auto-Runner).",
-            "goodFor": "Dân MMO, Automation, Tiết kiệm thời gian.",
-            "badFor": "Người thích làm thủ công.",
-            "link": "#"
-        }
-    ]
+  "products": [
+    {
+      "name": "Lịch Âm Dương",
+      "icon": "/assets/logos/lichamduong_icon.png",
+      "usage": "App mình làm để dùng hằng ngày trên Windows.<br>Có Lịch Âm Dương, ghi chú và nhắc việc.",
+      "goodFor": "Đây là bản thử nghiệm app Windows giúp ghi chú và nhắc việc hàng ngày.<br>Không hứa hẹn kết quả, chỉ chia sẻ quá trình.<br>Ai muốn dùng thử thì vào nhóm Zalo.",
+      "badFor": "Không dành cho tất cả mọi người.",
+      "link": "/assets/releases/SetupLichAmDuong_v2.0_1766678516802.zip"
+    },
+    {
+      "name": "Flow Auto_Runner",
+      "icon": "assets/logos/flowautorunner_icon.png",
+      "usage": "Tool tự động hóa quy trình workflow (Auto-Runner).",
+      "goodFor": "Dân MMO, Automation, Tiết kiệm thời gian.",
+      "badFor": "Người thích làm thủ công.",
+      "link": "#"
+    }
+  ]
 }
