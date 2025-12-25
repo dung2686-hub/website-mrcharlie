@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Admin | MrCharlie</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Rajdhani:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css?v=5">
+    <link rel="stylesheet" href="css/admin.css?v=5">
+
+
+</head>
+
+<body>
+
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-container">
+        <div class="glass-card login-box">
+            <h1 class="glitch-text" data-text="SYSTEM ACCESS">SYSTEM ACCESS</h1>
+            <p>Nhập mã kích hoạt (GitHub Token) để truy cập hệ thống.</p>
+
+            <div class="input-group">
+                <i class="fa-solid fa-key"></i>
+                <input type="password" id="github-token" placeholder="ghp_xxxxxxxxxxxx">
+            </div>
+
+            <div class="repo-config">
+                <input type="text" id="repo-owner" placeholder="GitHub Username" value="dung2686-hub"
+                    title="Tên tài khoản GitHub của bạn">
+                <input type="text" id="repo-name" placeholder="Repository Name" value="website-mrcharlie"
+                    title="Tên kho lưu trữ code">
+            </div>
+            <p style="font-size: 0.8rem; color: #aaa; margin-top: -10px; margin-bottom: 20px;">
+                <i class="fa-solid fa-circle-info"></i> Username & Repo Name (Mặc định đã điền đúng cho bạn)
+            </p>
+
+            <button id="btn-login" class="btn-tiger btn-full">
+                <i class="fa-solid fa-unlock"></i> KÍCH HOẠT
+            </button>
+            <p id="login-msg" class="error-msg"></p>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="dashboard-container hidden">
+        <!-- Sidebar -->
+        <aside class="sidebar glass-card">
+            <div class="logo">ADMIN <span class="text-tiger">CORE</span></div>
+            <nav class="menu">
+                <button class="menu-item active" onclick="switchTab('products')">
+                    <i class="fa-solid fa-box-open"></i> Sản Phẩm
+                </button>
+                <button class="menu-item" onclick="switchTab('tools')">
+                    <i class="fa-solid fa-screwdriver-wrench"></i> Công Cụ
+                </button>
+                <div class="divider"></div>
+                <button class="menu-item logout" onclick="logout()">
+                    <i class="fa-solid fa-power-off"></i> Ngắt Kết Nối
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-bar glass-card">
+                <h2 id="page-title">Quản Lý Sản Phẩm</h2>
+                <div class="actions">
+                    <div class="search-box">
+                        <i class="fa-solid fa-search"></i>
+                        <input type="text" id="admin-search" placeholder="Tìm kiếm...">
+                    </div>
+                    <button class="btn-tiger sm" onclick="newItem()">
+                        <i class="fa-solid fa-plus"></i> Thêm Mới
+                    </button>
+                    <button class="btn-tiger sm success" id="btn-save-all" onclick="saveChanges()">
+                        <i class="fa-solid fa-save"></i> LƯU THAY ĐỔI
+                    </button>
+                </div>
+            </header>
+
+            <!-- List View -->
+            <div id="list-view" class="grid-container">
+                <!-- Items will be rendered here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Chỉnh Sửa</h3>
+                <button class="close-btn" onclick="closeModal()"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="edit-form">
+                    <div class="form-group">
+                        <label>Tên:</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Icon:</label>
+                        <div class="icon-input">
+                            <input type="file" id="icon-file" accept="image/*" onchange="handleIconUpload(this)"
+                                style="display:none;">
+                            <button type="button" class="btn-tiger sm"
+                                onclick="document.getElementById('icon-file').click()" style="margin-bottom:10px;">
+                                <i class="fa-solid fa-upload"></i> Chọn Ảnh
+                            </button>
+                            <input type="text" name="icon" placeholder="Hoặc nhập URL ảnh"
+                                oninput="previewIcon(this.value)">
+                            <div class="icon-preview" id="icon-preview"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Công Dụng:</label>
+                        <textarea name="usage" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Hợp Với:</label>
+                        <input type="text" name="goodFor">
+                    </div>
+                    <div class="form-group">
+                        <label>Chưa Hợp:</label>
+                        <input type="text" name="badFor">
+                    </div>
+                    <div class="form-group">
+                        <label>Link:</label>
+                        <input type="text" name="link">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-tiger btn-delete" onclick="deleteCurrentItem()">Xóa</button>
+                <button class="btn-tiger" onclick="saveCurrentItem()">Xác Nhận</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/github-client.js?v=8"></script>
+    <script src="js/app.js?v=8"></script>
+</body>
+
+</html>

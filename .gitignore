@@ -1,0 +1,20 @@
+# --- System & OS Files (Rác hệ thống - Không cần thiết) ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- IDE & Editors (Cấu hình riêng của Dev - Mỗi người 1 kiểu) ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Dependencies & Build (Phòng hờ tương lai mở rộng) ---
+node_modules/
+dist/
+.env
+
+# --- Logs (File báo lỗi tạm thời) ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

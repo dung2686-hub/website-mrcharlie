@@ -1,0 +1,710 @@
+:root {
+    --color-bg-dark: #050505;
+    --color-bg-panel: #121212;
+    --color-tiger-orange: #FF9F1C;
+    --color-tiger-gold: #FFD700;
+    --color-tech-blue: #00D4FF;
+    --color-text-main: #FFFFFF;
+    --color-text-muted: #888888;
+
+    --font-main: 'Outfit', sans-serif;
+    --font-tech: 'Rajdhani', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-main);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+    /* Cyber Grid & Glow Background */
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(255, 159, 28, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(0, 212, 255, 0.08) 0%, transparent 25%),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 50px 50px, 50px 50px;
+    background-attachment: fixed;
+}
+
+/* Utilities */
+.text-tiger {
+    color: var(--color-tiger-orange);
+}
+
+.highlight-blue {
+    color: var(--color-tech-blue);
+}
+
+.highlight-orange {
+    color: var(--color-tiger-orange);
+}
+
+/* Navigation */
+.glass-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--color-text-main);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--color-tiger-orange);
+}
+
+/* Buttons */
+.btn-tiger {
+    background: linear-gradient(45deg, var(--color-tiger-orange), var(--color-tiger-gold));
+    border: none;
+    padding: 12px 30px;
+    color: #000;
+    font-weight: 800;
+    font-family: var(--font-tech);
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-tiger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 159, 28, 0.6);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 12px 30px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 15px;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10%;
+    position: relative;
+    background: radial-gradient(circle at top right, rgba(0, 212, 255, 0.1), transparent 40%);
+}
+
+.hero-content h1 {
+    font-size: 5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--color-text-muted);
+    margin-bottom: 40px;
+}
+
+/* Visuals */
+.tiger-circle {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cyber-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--color-tech-blue);
+    border-radius: 50%;
+    animation: spin 10s linear infinite;
+    opacity: 0.5;
+}
+
+.hero-avatar-img {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+    z-index: 2;
+    filter: drop-shadow(0 0 30px var(--color-tiger-orange));
+    animation: float 3s ease-in-out infinite;
+    border-radius: 50%;
+    /* Bo tròn nếu ảnh vuông */
+}
+
+/* Arsenal Section */
+.section-padding {
+    padding: 100px 10%;
+}
+
+.section-header {
+    margin-bottom: 60px;
+    border-left: 4px solid var(--color-tiger-orange);
+    padding-left: 20px;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-family: var(--font-tech);
+    margin-bottom: 10px;
+}
+
+.section-desc {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Glass Card Base */
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.glass-card:hover::before {
+    opacity: 1;
+}
+
+.glass-card:hover {
+    border-color: var(--color-tiger-orange);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.8);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: #ffffff;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 10px;
+}
+
+/* Glass Card Detailed (New Layout) */
+.tool-card-detailed {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.tool-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tool-header .card-icon {
+    margin-bottom: 0;
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+}
+
+.tool-header h3 {
+    font-size: 1.5rem;
+    color: var(--color-text-main);
+}
+
+.info-group {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.info-group .label {
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--color-text-muted);
+}
+
+.info-group .content {
+    color: #dedede;
+}
+
+.highlight-green {
+    color: #00ff88 !important;
+}
+
+.highlight-red {
+    color: #ff4d4d !important;
+}
+
+.btn-full {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+/* Override old stuff if needed */
+.tag {
+    display: none;
+}
+
+/* Territory Section */
+.dark-zone {
+    background: #000;
+    /* Darker than body */
+    position: relative;
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.social-card {
+    text-decoration: none;
+    color: #fff;
+    background: var(--color-bg-panel);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s;
+}
+
+.social-card .icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.social-card:hover {
+    transform: translateY(-5px);
+}
+
+.social-card.youtube:hover {
+    background: #cc0000;
+    border-color: #cc0000;
+}
+
+.social-card.zalo:hover {
+    background: #0068ff;
+    border-color: #0068ff;
+}
+
+.social-card.facebook:hover {
+    background: #1877f2;
+    border-color: #1877f2;
+}
+
+/* Footer */
+footer {
+    padding: 50px 10%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    color: var(--color-text-muted);
+}
+
+
+/* Animations */
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* --- Spin Widget (Floating Zalo) --- */
+.spin-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 140px;
+    /* Nhỏ gọn hơn */
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+    z-index: 9999;
+    /* Luôn nổi trên cùng */
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 0%, transparent 70%);
+    /* Nền mờ để chữ rõ hơn */
+    border-radius: 50%;
+}
+
+.spin-widget:hover {
+    transform: scale(1.1);
+}
+
+.spin-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: rotateText 10s linear infinite;
+    z-index: 1;
+}
+
+.spin-text text {
+    fill: var(--color-tech-blue);
+    font-family: var(--font-tech);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px var(--color-tech-blue);
+}
+
+.zalo-center-logo {
+    width: 60px;
+    /* Logo nhỏ lại */
+    height: 60px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    overflow: hidden;
+}
+
+.zalo-center-logo img {
+    width: 60%;
+    height: auto;
+}
+
+/* Ẩn container cũ trong Territory nếu không dùng nữa */
+.spin-widget-container {
+    display: none;
+}
+
+@keyframes rotateText {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- MOBILE RESPONSIVE (Fix 'Fèn') --- */
+@media (max-width: 768px) {
+
+    /* 1. Navigation: Gọn gàng hơn */
+    .glass-nav {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .btn-tiger {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        width: 100%;
+        /* Nút full màn hình cho dễ bấm */
+    }
+
+    /* 2. Hero Section: Chỉnh lại bố cục dọc */
+    .hero-section {
+        flex-direction: column-reverse;
+        /* Đưa ảnh lên trên, chữ xuống dưới nếu cần, hoặc giữ nguyên */
+        padding: 120px 20px 50px;
+        /* Thêm padding-top để tránh bị Nav che */
+        height: auto;
+        /* Bỏ chiều cao cố định */
+        text-align: center;
+        justify-content: center;
+    }
+
+    .hero-content {
+        margin-top: 30px;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+        /* Giảm size chữ khổng lồ */
+        line-height: 1.2;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .cta-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-outline {
+        margin-left: 0;
+    }
+
+    /* 3. Visual: Thu nhỏ Hổ */
+    .tiger-circle {
+        width: 280px;
+        height: 280px;
+        margin: 0 auto;
+    }
+
+    .tiger-avatar {
+        font-size: 100px;
+    }
+
+    /* 4. Các Section khác */
+    .section-padding {
+        padding: 60px 20px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        /* 1 cột duy nhất */
+        gap: 20px;
+    }
+
+    .glass-card {
+        padding: 20px;
+    }
+}
+
+/* --- MINIMALIST LANDING PAGE STYLES --- */
+
+.landing-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* Brand Section */
+.brand-section {
+    margin-bottom: 30px;
+}
+
+.tiger-circle-large {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Tái sử dụng .hero-avatar-img và .cyber-ring từ code cũ */
+
+.brand-name {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+/* Headline */
+.main-headline {
+    font-size: 1.8rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* Description */
+.description-text {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 40px;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+/* CTA Button Large */
+.btn-large {
+    font-size: 1.2rem;
+    padding: 15px 40px;
+    border-radius: 50px;
+    /* Bo tròn mềm mại hơn */
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 0 20px rgba(255, 159, 28, 0.4);
+}
+
+/* Minimal Footer */
+.minimal-footer {
+    margin-top: 60px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 20px;
+    width: 100%;
+}
+
+/* Screenshot Showcase */
+.app-screenshot-container {
+    margin: 30px 0 40px;
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+}
+
+.app-showcase-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 212, 255, 0.1);
+    transition: transform 0.3s;
+}
+
+.app-showcase-img:hover {
+    transform: scale(1.02);
+    border-color: var(--color-tech-blue);
+}
+
+/* Glow Background */
+.bg-glow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .tiger-circle-large {
+        width: 160px;
+        height: 160px;
+    }
+
+    .brand-name {
+        font-size: 2.2rem;
+    }
+
+    .main-headline {
+        font-size: 1.4rem;
+    }
+
+    .description-text {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    .btn-large {
+        width: 100%;
+        /* Full width trên mobile */
+        padding: 15px 20px;
+    }
+}
