@@ -50,7 +50,12 @@ function switchApp(index) {
     }
 
     if (image) {
-        image.src = app.icon;
+        // Fix path: remove leading slash if present to make it relative
+        let iconPath = app.icon;
+        if (iconPath && iconPath.startsWith('/') && !iconPath.startsWith('http')) {
+            iconPath = iconPath.substring(1);
+        }
+        image.src = iconPath;
         image.style.display = 'block';
     }
 
