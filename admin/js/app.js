@@ -183,7 +183,7 @@ function renderList(filterText = '') {
         const iconSrc = isImage ? resolveImageUrl(item.icon) : '';
 
         const iconHtml = isImage
-            ? `<img src="${iconSrc}" onerror="this.src='${item.icon}'" style="width:50px; height:50px; object-fit:contain; background:rgba(255,255,255,0.1); border-radius:5px;">`
+            ? `<img src="${iconSrc}" onerror="this.outerHTML='<span style=\\'font-size:2rem\\'>⚠️</span>'" style="width:50px; height:50px; object-fit:contain; background:rgba(255,255,255,0.1); border-radius:5px;">`
             : `<div style="font-size:2rem;">${item.icon || '📦'}</div>`;
 
         return `
