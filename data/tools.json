@@ -1,44 +1,44 @@
 {
-    "tools": [
-        {
-            "name": "ChatGPT",
-            "icon": "assets/logos/chatgpt.svg",
-            "usage": "Trợ lý ảo đa năng: Viết lách, tư duy logic và giải quyết vấn đề hàng ngày.",
-            "goodFor": "Mọi người, đặc biệt là Content Creator & Solopreneur.",
-            "badFor": "Các tác vụ cần dữ liệu realtime (nếu dùng bản Free).",
-            "link": "#"
-        },
-        {
-            "name": "Gemini",
-            "icon": "assets/logos/gemini.svg",
-            "usage": "Trợ lý AI tích hợp sâu vào Google Workspace. Xử lý văn bản & dữ liệu mượt mà.",
-            "goodFor": "Người dùng hệ sinh thái Google, cần tóm tắt/xử lý tài liệu nhanh.",
-            "badFor": "Yêu cầu khắt khe về code phức tạp (so với Claude/GPT-4).",
-            "link": "#"
-        },
-        {
-            "name": "Google AI Studio",
-            "icon": "assets/logos/google_ai.svg",
-            "usage": "Môi trường Pro để test prompt, dùng model Gemini 1.5 với Context Window khổng lồ.",
-            "goodFor": "Dev, Prompt Engineer muốn vọc sâu vào Model.",
-            "badFor": "Người dùng phổ thông chỉ cần giao diện Chat đơn giản.",
-            "link": "#"
-        },
-        {
-            "name": "Antigravity (DeepMind)",
-            "icon": "assets/logos/deepmind.svg",
-            "usage": "Advanced Agentic AI. Cánh tay phải đắc lực để code và tự động hóa quy trình.",
-            "goodFor": "Xây dựng sản phẩm, coding, workflow phức tạp.",
-            "badFor": "Chat vui vẻ (Nó sinh ra để làm việc).",
-            "link": "#"
-        },
-        {
-            "name": "Flow (Veo 3)",
-            "icon": "assets/logos/flow.svg",
-            "usage": "Tạo video chất lượng điện ảnh từ văn bản (Text-to-Video) của DeepMind.",
-            "goodFor": "Video Creator, Filmmaker muốn hiện thực hóa ý tưởng.",
-            "badFor": "Máy cấu hình yếu (nếu chạy local) hoặc cần video dài ngay lập tức.",
-            "link": "#"
-        }
-    ]
+  "tools": [
+    {
+      "name": "ChatGPT",
+      "icon": "assets/logos/chatgpt.svg",
+      "usage": "Trợ lý ảo đa năng: Viết lách, tư duy logic và giải quyết vấn đề hàng ngày.",
+      "goodFor": "Mọi người, đặc biệt là Content Creator & Solopreneur.",
+      "badFor": "Các tác vụ cần dữ liệu realtime (nếu dùng bản Free).",
+      "link": "#"
+    },
+    {
+      "name": "Gemini",
+      "icon": "assets/logos/gemini.svg",
+      "usage": "Trợ lý AI tích hợp sâu vào Google Workspace. Xử lý văn bản & dữ liệu mượt mà.",
+      "goodFor": "Người dùng hệ sinh thái Google, cần tóm tắt/xử lý tài liệu nhanh.",
+      "badFor": "Yêu cầu khắt khe về code phức tạp (so với Claude/GPT-4).",
+      "link": "#"
+    },
+    {
+      "name": "Google AI Studio",
+      "icon": "assets/logos/google_ai.svg",
+      "usage": "Môi trường Pro để test prompt, dùng model Gemini 1.5 với Context Window khổng lồ.",
+      "goodFor": "Dev, Prompt Engineer muốn vọc sâu vào Model.",
+      "badFor": "Người dùng phổ thông chỉ cần giao diện Chat đơn giản.",
+      "link": "#"
+    },
+    {
+      "name": "Antigravity (DeepMind)",
+      "icon": "assets/logos/deepmind.svg",
+      "usage": "Advanced Agentic AI. Cánh tay phải đắc lực để code và tự động hóa quy trình.",
+      "goodFor": "Xây dựng sản phẩm, coding, workflow phức tạp.",
+      "badFor": "Chat vui vẻ (Nó sinh ra để làm việc).",
+      "link": "#"
+    },
+    {
+      "name": "Flow (Veo 3)",
+      "icon": "assets/logos/flow.svg",
+      "usage": "Tạo video chất lượng điện ảnh từ văn bản (Text-to-Video) của DeepMind.",
+      "goodFor": "Video Creator, Filmmaker muốn hiện thực hóa ý tưởng.",
+      "badFor": "Máy cấu hình yếu (nếu chạy local) hoặc cần video dài ngay lập tức.",
+      "link": "#"
+    }
+  ]
 }
