@@ -19,7 +19,7 @@ async function fetchAndRenderHero() {
         // Render Initial (First Product)
         switchApp(0);
 
-        // Render Switcher
+        // Render Switcher (Will auto-hide if only 1 product)
         renderSwitcher();
 
     } catch (error) {
@@ -39,14 +39,14 @@ function switchApp(index) {
     const cta = document.getElementById('hero-cta');
 
     if (headline) {
-        // Fade out effect could be added here
-        headline.innerHTML = `App <span class="highlight-orange">${app.name}</span><br> ${app.usage}`;
+        // Use 'usage' as the main catchy headline (Squeeze Style) 
+        // fallback to Name if usage is empty
+        headline.innerHTML = app.usage || app.name;
     }
 
     if (description) {
-        description.innerHTML = app.goodFor
-            ? `Phù hợp cho: ${app.goodFor}`
-            : app.usage;
+        // Use 'goodFor' as the humble description
+        description.innerHTML = app.goodFor || "";
     }
 
     if (image) {
@@ -61,10 +61,11 @@ function switchApp(index) {
 
     if (cta) {
         cta.href = app.link;
-        cta.innerHTML = `👉 Tải App Ngay`;
-
+        // Text Logic
         if (app.link.includes('zalo')) {
-            cta.innerHTML = `👉 Vào nhóm Zalo lấy App`;
+            cta.innerHTML = `👉 Vào nhóm Zalo nhận App`;
+        } else {
+            cta.innerHTML = `👉 Xem Chi Tiết`;
         }
         cta.style.display = 'inline-flex';
     }
@@ -81,9 +82,12 @@ function renderSwitcher() {
     const container = document.getElementById('app-switcher');
     if (!container) return;
 
+    // Squeeze Logic: If only 1 app, hide the switcher entirely
     if (allProducts.length <= 1) {
         container.style.display = 'none';
         return;
+    } else {
+        container.style.display = 'block'; // Show if multiple apps
     }
 
     let html = `<span style="color:#666; margin-right:10px; font-size:0.9rem;">LAB projects:</span>`;
