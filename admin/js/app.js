@@ -300,8 +300,7 @@ async function saveCurrentItem() {
     saveChanges(); // Auto-save to JSON after update
 }
 
-saveChanges(); // Auto-save to JSON after update
-}
+
 
 function updateSaveBtnStatus(text, disabled = true) {
     const saveBtn = document.querySelector('.modal-footer .btn-tiger:not(.btn-delete)');
@@ -320,6 +319,7 @@ function deleteCurrentItem() {
 
     closeModal();
     renderList();
+    saveChanges();
 }
 
 function closeModal() {
