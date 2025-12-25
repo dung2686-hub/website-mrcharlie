@@ -5,7 +5,8 @@ let appState = {
     shas: { products: null, tools: null },
     currentTab: 'products', // 'products' or 'tools'
     editingId: null, // Index of item being edited
-    pendingIconFile: null // File object waiting to be uploaded on save
+    pendingIconFile: null, // File object waiting to be uploaded on save
+    pendingExeFile: null // EXE file waiting upload
 };
 
 // DOM Elements
@@ -242,35 +243,38 @@ async function saveCurrentItem() {
     let iconPath = inputs['icon'].value.trim();
     if (appState.pendingIconFile) {
         try {
-            // Show uploading indicator
-            const saveBtn = document.querySelector('.modal-footer .btn-tiger:not(.btn-delete)');
-            const originalText = saveBtn.textContent;
-            saveBtn.textContent = '⏳ Đang upload ảnh...';
-            saveBtn.disabled = true;
-
-            // Upload to GitHub
-            iconPath = await ghClient.uploadImage(appState.pendingIconFile);
-
-            // Reset button
-            saveBtn.textContent = originalText;
-            saveBtn.disabled = false;
-
-            // Clear pending file
+            updateSaveBtnStatus('⏳ Đang upload Icon...');
+            iconPath = await ghClient.uploadFile(appState.pendingIconFile, 'assets/logos');
             appState.pendingIconFile = null;
         } catch (error) {
-            console.error(error);
-            alert('❌ Lỗi upload ảnh: ' + error.message);
-            return; // Don't save if upload fails
+            alert('❌ Lỗi upload Icon: ' + error.message);
+            updateSaveBtnStatus('Xác Nhận', false); // Re-enable button
+            return;
         }
     } else {
-        // Sanitize Icon Path: Ensure absolute path for consistency
+        // Sanitize Icon Path
         if (iconPath && !iconPath.startsWith('http') && !iconPath.startsWith('/')) {
-            // If user typed "assets/...", make it "/assets/..."
-            if (iconPath.startsWith('../')) {
-                iconPath = iconPath.substring(2); // Convert "../assets" -> "/assets"
-            } else {
-                iconPath = '/' + iconPath;
-            }
+            if (iconPath.startsWith('../')) iconPath = iconPath.substring(2);
+            else iconPath = '/' + iconPath;
+        }
+    }
+
+    // 2. Upload EXE/Link if pending
+    let linkPath = inputs['link'].value.trim();
+    if (appState.pendingExeFile) {
+        try {
+            updateSaveBtnStatus('⏳ Đang upload File Setup...');
+            // Upload to assets/releases
+            const uploadedPath = await ghClient.uploadFile(appState.pendingExeFile, 'assets/releases');
+
+            // Link is relative path
+            linkPath = uploadedPath;
+
+            appState.pendingExeFile = null;
+        } catch (error) {
+            alert('❌ Lỗi upload File: ' + error.message);
+            updateSaveBtnStatus('Xác Nhận', false); // Re-enable button
+            return;
         }
     }
 
@@ -280,21 +284,20 @@ async function saveCurrentItem() {
         usage: inputs['usage'].value,
         goodFor: inputs['goodFor'].value,
         badFor: inputs['badFor'].value,
-        link: inputs['link'].value
+        link: linkPath
     };
 
     const targetArray = appState.currentTab === 'products' ? appState.products : appState.tools;
 
     if (appState.editingId === null) {
-        // Add New
         targetArray.push(newItem);
     } else {
-        // Update Existing
         targetArray[appState.editingId] = newItem;
     }
 
     closeModal();
     renderList();
+    saveChanges(); // Auto-save to JSON after update
 }
 
 function deleteCurrentItem() {
@@ -310,7 +313,8 @@ function deleteCurrentItem() {
 
 function closeModal() {
     editModal.classList.add('hidden');
-    appState.pendingIconFile = null; // Clear pending file
+    appState.pendingIconFile = null; // Clear pending icon file
+    appState.pendingExeFile = null; // Clear pending executable file
 }
 
 function previewIcon(val) {
@@ -345,11 +349,10 @@ function handleIconUpload(input) {
     // Store file for later upload
     appState.pendingIconFile = file;
 
-    // Show local preview immediately
-    const preview = document.getElementById('icon-preview');
+    // Preview
     const reader = new FileReader();
     reader.onload = (e) => {
-        preview.innerHTML = `<img src="${e.target.result}" style="width:100%; height:100px; object-fit:contain;">`;
+        document.getElementById('icon-preview').innerHTML = `<img src="${e.target.result}" style="width:100%; height:100px; object-fit:contain;">`;
     };
     reader.onerror = () => {
         alert('⚠️ Lỗi đọc file ảnh!');
@@ -357,9 +360,6 @@ function handleIconUpload(input) {
     };
     reader.readAsDataURL(file);
 
-    // Update input to show filename
-    const iconInput = document.querySelector('input[name="icon"]');
-    iconInput.value = `📁 ${file.name} (Chưa upload)`;
 
     // Reset file input
     input.value = '';

@@ -139,8 +139,16 @@
                         <input type="text" name="badFor" placeholder="VD: App cần xác nhận quyền qua Zalo">
                     </div>
                     <div class="form-group">
-                        <label>Link:</label>
-                        <input type="text" name="link">
+                        <label>Link (Hoặc Upload File):</label>
+                        <div class="input-with-btn" style="display:flex; gap:10px;">
+                            <input type="text" name="link" style="flex:1;" placeholder="https://...">
+                            <input type="file" id="exe-file" accept=".exe,.zip,.msi,.rar"
+                                onchange="handleExeUpload(this)" style="display:none;">
+                            <button type="button" class="btn-tiger sm"
+                                onclick="document.getElementById('exe-file').click()" title="Upload File Setup">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>

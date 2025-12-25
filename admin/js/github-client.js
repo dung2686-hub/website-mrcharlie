@@ -87,7 +87,7 @@ class GitHubClient {
         return await response.json();
     }
 
-    async uploadImage(file, folder = 'assets/logos') {
+    async uploadFile(file, folder = 'assets/logos') {
         // Read file as base64
         const reader = new FileReader();
 
@@ -105,7 +105,7 @@ class GitHubClient {
 
                     // Upload to GitHub
                     const body = {
-                        message: `Upload image: ${filename}`,
+                        message: `Upload file: ${filename}`,
                         content: base64Content
                     };
 
@@ -122,7 +122,11 @@ class GitHubClient {
 
                     const result = await response.json();
 
-                    // Return the absolute path relative to root
+                    // Return the raw GitHub URL for binary files to ensure download
+                    // Or return relative path. For .exe, relative path on GitHub Pages works but might be cached.
+                    // Raw URL is safer for "Download Latest".
+                    // But relative is better for domain consistency.
+                    // Let's stick to returning relative path, same as before.
                     resolve('/' + path);
                 } catch (error) {
                     reject(error);
