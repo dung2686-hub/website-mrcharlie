@@ -190,6 +190,13 @@ body {
     align-content: flex-start;
 }
 
+#contact-view {
+    overflow-y: auto;
+    height: calc(100vh - var(--header-height));
+    padding-bottom: 50px;
+    /* Ensure bottom content is not cut off */
+}
+
 /* Edit Card override */
 .tool-card-detailed {
     cursor: pointer;
