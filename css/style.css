@@ -1,9 +1,11 @@
 :root {
     --color-bg-dark: #050505;
     --color-bg-panel: #121212;
-    --color-tiger-orange: #FF9F1C;
-    --color-tiger-gold: #FFD700;
-    --color-tech-blue: #00D4FF;
+    --color-tiger-orange: #FF5722;
+    /* Derived from Logo Rust/Red-Orange #A05029 but brightened */
+    --color-tiger-gold: #FFC107;
+    --color-tech-blue: #00E5FF;
+    /* Derived from Logo Light Cyan #A2F2F2 but vibrant */
     --color-text-main: #FFFFFF;
     --color-text-muted: #888888;
 
@@ -24,8 +26,8 @@ body {
     overflow-x: hidden;
     /* Cyber Grid & Glow Background */
     background-image:
-        radial-gradient(circle at 15% 50%, rgba(255, 159, 28, 0.08) 0%, transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(0, 212, 255, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 15% 50%, rgba(255, 87, 34, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(0, 229, 255, 0.08) 0%, transparent 25%),
         linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 100% 100%, 100% 100%, 50px 50px, 50px 50px;
@@ -99,7 +101,7 @@ body {
 
 .btn-tiger:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(255, 159, 28, 0.6);
+    box-shadow: 0 0 20px rgba(255, 87, 34, 0.6);
 }
 
 .btn-outline {
@@ -413,7 +415,7 @@ footer {
     /* Changed from Alien Green to Tech Blue */
     margin-bottom: 30px;
     text-transform: uppercase;
-    text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
     letter-spacing: 0.5px;
 }
 
@@ -438,7 +440,7 @@ footer {
     display: flex;
     justify-content: center;
     /* Neon Glow */
-    filter: drop-shadow(0 0 5px rgba(255, 159, 28, 0.6));
+    filter: drop-shadow(0 0 5px rgba(255, 87, 34, 0.6));
 }
 
 .contact-row .info-box {
@@ -493,7 +495,7 @@ footer {
     background: var(--color-tiger-orange);
     border-color: var(--color-tiger-orange);
     color: #000;
-    box-shadow: 0 0 15px rgba(255, 159, 28, 0.6);
+    box-shadow: 0 0 15px rgba(255, 87, 34, 0.6);
     transform: translateY(-3px);
 }
 
@@ -614,7 +616,7 @@ footer {
     align-items: center;
     justify-content: center;
     z-index: 2;
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
     overflow: hidden;
 }
 
