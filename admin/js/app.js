@@ -35,6 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Search Listener
     document.getElementById('admin-search').addEventListener('input', (e) => handleSearch(e));
 
+    // Listen for manual link input to clear pending file
+    const linkInput = document.querySelector('input[name="link"]');
+    if (linkInput) {
+        linkInput.addEventListener('input', () => {
+            if (appState.pendingExeFile) {
+                appState.pendingExeFile = null;
+                // No need to alert, just silently clear the pending file state
+                // as user is overriding it with a manual link.
+            }
+        });
+    }
+
     // Login Listener
     document.getElementById('btn-login').addEventListener('click', () => login());
 });
