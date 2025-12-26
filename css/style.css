@@ -574,18 +574,18 @@ footer {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 140px;
-    /* Nhỏ gọn hơn */
-    height: 140px;
+    width: 120px;
+    /* Reduced from 140px */
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: transform 0.3s;
     z-index: 9999;
-    /* Luôn nổi trên cùng */
+    /* Always on top */
     background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 0%, transparent 70%);
-    /* Nền mờ để chữ rõ hơn */
+    /* Dim background for clarity */
     border-radius: 50%;
 }
 
@@ -604,16 +604,17 @@ footer {
 .spin-text text {
     fill: var(--color-tech-blue);
     font-family: var(--font-tech);
-    font-size: 14px;
+    font-size: 13px;
+    /* Slightly reduced font size for better fit */
     font-weight: 700;
     letter-spacing: 2px;
     text-shadow: 0 0 5px var(--color-tech-blue);
 }
 
 .zalo-center-logo {
-    width: 60px;
-    /* Logo nhỏ lại */
-    height: 60px;
+    width: 50px;
+    /* Reduced from 60px */
+    height: 50px;
     border-radius: 50%;
     background: #fff;
     display: flex;
@@ -646,6 +647,19 @@ footer {
 
 /* --- MOBILE RESPONSIVE (Fix 'Fèn') --- */
 @media (max-width: 768px) {
+
+    /* Adjust Zalo Widget for Mobile */
+    .spin-widget {
+        width: 90px;
+        height: 90px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .zalo-center-logo {
+        width: 40px;
+        height: 40px;
+    }
 
     /* 1. Navigation: Gọn gàng hơn */
     .glass-nav {
