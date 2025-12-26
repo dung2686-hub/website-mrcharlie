@@ -501,11 +501,15 @@ footer {
 
 .copyright-line {
     margin-top: 40px;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
+    /* Increased from 0.85rem */
     text-align: center;
-    opacity: 0.5;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 20px;
+    opacity: 0.8;
+    /* Increased from 0.5 */
+    color: var(--color-text-muted);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    /* Slightly more visible border */
+    padding-top: 25px;
     width: 100%;
 }
 
