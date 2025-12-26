@@ -370,11 +370,177 @@ body {
 }
 
 /* Footer */
+/* Footer Neon Style */
 footer {
     padding: 50px 10%;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    /* Slight darkening */
+    text-align: left;
+    /* Align left per image */
     color: var(--color-text-muted);
+}
+
+#main-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center everything container */
+}
+
+.footer-content-neon {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+    /* Text content left aligned */
+}
+
+.footer-brand {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.footer-tagline {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-tech-blue);
+    /* Changed from Alien Green to Tech Blue */
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+    letter-spacing: 0.5px;
+}
+
+.contact-list-neon {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-row .icon-box {
+    width: 40px;
+    color: var(--color-tiger-orange);
+    /* Match Tiger Brand */
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    /* Neon Glow */
+    filter: drop-shadow(0 0 5px rgba(255, 159, 28, 0.6));
+}
+
+.contact-row .info-box {
+    display: flex;
+    flex-direction: column;
+    /* Label on top if needed, or inline */
+}
+
+/* Specific layout per image: Label: Value */
+.contact-row .info-box {
+    flex-direction: row;
+    gap: 10px;
+    font-size: 1.1rem;
+    align-items: center;
+}
+
+.contact-row .label {
+    font-weight: 700;
+    color: #ccc;
+    min-width: 60px;
+    /* Align columns */
+}
+
+.contact-row .value {
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+/* Footer Socials */
+.footer-socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-btn-neon {
+    width: 45px;
+    height: 45px;
+    border: 1px solid var(--color-text-muted);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.social-btn-neon:hover {
+    background: var(--color-tiger-orange);
+    border-color: var(--color-tiger-orange);
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 159, 28, 0.6);
+    transform: translateY(-3px);
+}
+
+.copyright-line {
+    margin-top: 40px;
+    font-size: 0.85rem;
+    text-align: center;
+    opacity: 0.5;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 20px;
+    width: 100%;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    footer {
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .footer-content-neon {
+        text-align: center;
+    }
+
+    .contact-row {
+        justify-content: center;
+        /* Center on mobile */
+        flex-direction: column;
+        /* Stack icon and text on small screens? Or keep row */
+        gap: 5px;
+    }
+
+    .contact-row {
+        flex-direction: row;
+        /* Keep row */
+        justify-content: flex-start;
+        /* Still left align content looks better list-like */
+        padding-left: 20px;
+    }
+
+    .footer-tagline {
+        font-size: 0.9rem;
+    }
+
+    .footer-socials {
+        justify-content: center;
+    }
 }
 
 
@@ -637,43 +803,9 @@ footer {
     box-shadow: 0 0 20px rgba(255, 159, 28, 0.4);
 }
 
-/* Minimal Footer */
-.minimal-footer {
-    margin-top: 60px;
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.3);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 20px;
-    width: 100%;
-}
 
-.footer-contacts {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    font-size: 0.95rem;
-    color: #ccc;
-}
+/* Replaced by main footer styles */
 
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.contact-item i {
-    color: var(--color-tiger-orange);
-    font-size: 1.1rem;
-}
-
-@media (max-width: 768px) {
-    .footer-contacts {
-        flex-direction: column;
-        gap: 15px;
-    }
-}
 
 /* Screenshot Showcase */
 .app-screenshot-container {

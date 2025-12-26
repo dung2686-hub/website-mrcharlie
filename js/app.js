@@ -123,4 +123,72 @@ document.addEventListener('mousemove', (e) => {
 });
 
 // Init
-document.addEventListener('DOMContentLoaded', fetchAndRenderHero);
+document.addEventListener('DOMContentLoaded', () => {
+    fetchAndRenderHero();
+    fetchAndRenderContact();
+});
+
+// --- Contact Data Logic ---
+async function fetchAndRenderContact() {
+    try {
+        const response = await fetch('data/contact.json?v=' + new Date().getTime());
+        if (!response.ok) return; // Silent fail if no file
+
+        const contact = await response.json();
+
+        // 1. Footer Info (Text)
+        if (contact.email) setContent('contact-email', contact.email);
+        if (contact.phone) setContent('contact-phone', contact.phone);
+        if (contact.address) setContent('contact-address', contact.address);
+        if (contact.slogan) setContent('footer-slogan', contact.slogan); // New Slogan logic
+
+        // 2. Footer IDs (Visibility Toggles)
+        toggleVisibility('footer-email-row', contact.showFooterEmail);
+        toggleVisibility('footer-phone-row', contact.showFooterPhone);
+        toggleVisibility('footer-address-row', contact.showFooterAddress);
+
+        // 3. Social Links (Footer)
+        updateLink('link-yt-footer', contact.youtube, contact.showFooterYoutube);
+        updateLink('link-fb-footer', contact.facebook, contact.showFooterFacebook);
+        updateLink('link-tiktok-footer', contact.tiktok, contact.showFooterTikTok);
+
+        // Zalo Footer: Special check
+        // "showFooterZalo" controls visibility only, link comes from "zalo"
+        updateLink('link-zalo-footer', contact.zalo, contact.showFooterZalo);
+
+        // 4. Spin Widget (Zalo Global)
+        // Always show if link exists (no toggle for widget itself in JSON, implies always ON if link present)
+        const spinWidget = document.getElementById('spin-widget-link');
+        if (spinWidget && contact.zalo) {
+            spinWidget.href = contact.zalo;
+            spinWidget.style.display = 'flex'; // Ensure visible
+        } else if (spinWidget) {
+            spinWidget.style.display = 'none'; // Hide if no Zalo link
+        }
+
+    } catch (e) {
+        console.error("Error loading contact data:", e);
+    }
+}
+
+function setContent(id, text) {
+    const el = document.getElementById(id);
+    if (el) el.innerText = text;
+}
+
+function toggleVisibility(id, shouldShow) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = shouldShow !== false ? 'flex' : 'none'; // Default to flex/show
+}
+
+function updateLink(id, url, shouldShow) {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    if (url && shouldShow !== false) {
+        el.href = url;
+        el.style.display = 'flex';
+    } else {
+        el.style.display = 'none';
+    }
+}

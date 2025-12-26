@@ -2,8 +2,9 @@
 let appState = {
     products: [],
     tools: [],
-    shas: { products: null, tools: null },
-    currentTab: 'products', // 'products' or 'tools'
+    contact: null, // Contact Data
+    shas: { products: null, tools: null, contact: null },
+    currentTab: 'products', // 'products' or 'tools' or 'contact'
     editingId: null, // Index of item being edited
     pendingIconFile: null, // File object waiting to be uploaded on save
     pendingExeFile: null // EXE file waiting upload
@@ -86,10 +87,24 @@ async function loadData() {
         // Load Tools
         const toolData = await ghClient.getFile('data/tools.json');
         appState.tools = toolData.content.tools || [];
-
         appState.shas.tools = toolData.sha;
 
-        renderList();
+        // Load Contact
+        try {
+            const contactData = await ghClient.getFile('data/contact.json');
+            appState.contact = contactData.content || {};
+            appState.shas.contact = contactData.sha;
+        } catch (err) {
+            console.warn("Contact data not found, init empty", err);
+            appState.contact = {};
+        }
+
+        // Render based on current tab
+        if (appState.currentTab === 'contact') {
+            renderContactForm();
+        } else {
+            renderList();
+        }
     } catch (e) {
         console.error(e);
         alert('Lỗi tải dữ liệu: ' + e.message);
@@ -125,6 +140,40 @@ async function saveChanges() {
         );
         appState.shas.tools = toolRes.content.sha;
 
+        // Save Contact
+        if (appState.contact) {
+            // Update appState.contact from Form Data
+            const form = document.getElementById('contact-form');
+            if (form) {
+                const fd = new FormData(form);
+                // Map FormData back to JSON structure
+                appState.contact.email = fd.get('email');
+                appState.contact.slogan = fd.get('slogan'); // Slogan
+                appState.contact.phone = fd.get('phone');
+                appState.contact.address = fd.get('address');
+                appState.contact.zalo = fd.get('zalo');
+                appState.contact.facebook = fd.get('facebook');
+                appState.contact.tiktok = fd.get('tiktok');
+                appState.contact.youtube = fd.get('youtube');
+
+                appState.contact.showFooterEmail = !!fd.get('showFooterEmail');
+                appState.contact.showFooterPhone = !!fd.get('showFooterPhone');
+                appState.contact.showFooterAddress = !!fd.get('showFooterAddress');
+                appState.contact.showFooterZalo = !!fd.get('showFooterZalo');
+                appState.contact.showFooterFacebook = !!fd.get('showFooterFacebook');
+                appState.contact.showFooterTikTok = !!fd.get('showFooterTikTok');
+                appState.contact.showFooterYoutube = !!fd.get('showFooterYoutube');
+            }
+
+            const contactRes = await ghClient.updateFile(
+                'data/contact.json',
+                appState.contact,
+                appState.shas.contact,
+                'Update Contact Info via Cyber Admin'
+            );
+            appState.shas.contact = contactRes.content.sha;
+        }
+
         alert('✅ Đã lưu thành công lên GitHub! Web sẽ cập nhật sau 1-2 phút.');
     } catch (e) {
         alert('❌ Lỗi khi lưu: ' + e.message);
@@ -139,12 +188,71 @@ function switchTab(tab) {
     appState.currentTab = tab;
     // Update Menu Active State
     document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
-    event.currentTarget.classList.add('active'); // Needs 'event' passed or bound, simple trick uses global event
+    event.currentTarget.classList.add('active');
 
     // Update Title
-    pageTitle.textContent = tab === 'products' ? 'Quản Lý Sản Phẩm' : 'Quản Lý Công Cụ';
+    const titles = {
+        'products': 'Quản Lý Sản Phẩm',
+        'tools': 'Quản Lý Công Cụ',
+        'contact': 'Cấu Hình Liên Hệ'
+    };
+    pageTitle.textContent = titles[tab];
 
-    renderList();
+    // Toggle Views
+    const listView = document.getElementById('list-view');
+    const contactView = document.getElementById('contact-view');
+    const searchBox = document.querySelector('.search-box');
+    const addBtn = document.querySelector('.btn-tiger.sm[onclick="newItem()"]');
+
+    if (tab === 'contact') {
+        listView.classList.add('hidden');
+        contactView.classList.remove('hidden');
+        if (searchBox) searchBox.style.display = 'none';
+        if (addBtn) addBtn.style.display = 'none';
+
+        renderContactForm();
+    } else {
+        listView.classList.remove('hidden');
+        contactView.classList.add('hidden');
+        if (searchBox) searchBox.style.display = 'flex';
+        if (addBtn) addBtn.style.display = 'flex';
+
+        renderList();
+    }
+}
+
+function renderContactForm() {
+    const data = appState.contact || {};
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    // Helper to set value
+    const setVal = (name, val) => {
+        const input = form.elements[name];
+        if (input) input.value = val || '';
+    };
+    // Helper to set checkbox
+    const setChk = (name, val) => {
+        const input = form.elements[name];
+        if (input) input.checked = val !== false; // Default true if undefined is handled in logic but here data is explicit
+    }
+
+    setVal('email', data.email);
+    setVal('slogan', data.slogan);
+    setVal('phone', data.phone);
+    setVal('address', data.address);
+    setVal('zalo', data.zalo);
+    setVal('facebook', data.facebook);
+    setVal('tiktok', data.tiktok);
+    setVal('youtube', data.youtube);
+
+    setChk('showFooterEmail', data.showFooterEmail);
+    setChk('showFooterPhone', data.showFooterPhone);
+    setChk('showFooterAddress', data.showFooterAddress);
+    setChk('showFooterZalo', data.showFooterZalo);
+    setChk('showFooterFacebook', data.showFooterFacebook);
+    setChk('showFooterTikTok', data.showFooterTikTok);
+    setChk('showFooterYoutube', data.showFooterYoutube);
 }
 
 // --- Helper Functions ---

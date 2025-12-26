@@ -66,6 +66,9 @@
                 <button class="menu-item" onclick="switchTab('tools')">
                     <i class="fa-solid fa-screwdriver-wrench"></i> Công Cụ
                 </button>
+                <button class="menu-item" onclick="switchTab('contact')">
+                    <i class="fa-solid fa-address-card"></i> Liên Hệ
+                </button>
                 <div class="divider"></div>
                 <button class="menu-item logout" onclick="logout()">
                     <i class="fa-solid fa-power-off"></i> Ngắt Kết Nối
@@ -95,6 +98,102 @@
             <!-- List View -->
             <div id="list-view" class="grid-container">
                 <!-- Items will be rendered here -->
+            </div>
+
+            <!-- Contact View -->
+            <div id="contact-view" class="glass-card hidden" style="padding: 30px; margin-top: 20px;">
+                <h3 class="text-tiger" style="margin-bottom: 20px;">Thông Tin Liên Hệ (Chân Trang & Widget)</h3>
+
+                <form id="contact-form">
+
+                    <!-- Info Group -->
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>📝 Slogan (Câu khẩu hiệu dưới tên thương hiệu):</label>
+                        <input type="text" name="slogan" placeholder="VD: CHIA SẺ QUÁ TRÌNH...">
+                    </div>
+
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+
+                        <div class="form-group">
+                            <label>📧 Email Liên Hệ:</label>
+                            <input type="text" name="email">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" name="showFooterEmail" id="chk-email">
+                                <label for="chk-email">Hiển thị ở Footer</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>📞 Số Điện Thoại:</label>
+                            <input type="text" name="phone">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" name="showFooterPhone" id="chk-phone">
+                                <label for="chk-phone">Hiển thị ở Footer</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group" style="margin-top:20px;">
+                        <label>📍 Địa Chỉ:</label>
+                        <input type="text" name="address">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" name="showFooterAddress" id="chk-address">
+                            <label for="chk-address">Hiển thị ở Footer</label>
+                        </div>
+                    </div>
+
+                    <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 30px 0;">
+
+                    <h3 class="text-tiger">Mạng Xã Hội</h3>
+
+                    <!-- Zalo (Special) -->
+                    <div class="form-group highlight-box">
+                        <label title="Link này sẽ áp dụng cho cả Nút Xoay và Footer">🔁 Link Zalo Group (Quan
+                            Trọng):</label>
+                        <div style="display:flex; gap:10px;">
+                            <i class="fa-solid fa-z"
+                                style="padding:10px; background:#fff; color:#0068ff; border-radius:4px; font-weight:bold; font-family:sans-serif;">Z</i>
+                            <input type="text" name="zalo" placeholder="https://zalo.me/...">
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" name="showFooterZalo" id="chk-zalo">
+                            <label for="chk-zalo">Hiển thị Icon Zalo ở Footer (Widget Vòng Xoay luôn hiện)</label>
+                        </div>
+                    </div>
+
+                    <!-- Other Socials -->
+                    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top:20px;">
+
+                        <div class="form-group">
+                            <label><i class="fa-brands fa-facebook"></i> Facebook:</label>
+                            <input type="text" name="facebook">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" name="showFooterFacebook" id="chk-fb">
+                                <label for="chk-fb">Hiện</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fa-brands fa-tiktok"></i> TikTok:</label>
+                            <input type="text" name="tiktok">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" name="showFooterTikTok" id="chk-tiktok">
+                                <label for="chk-tiktok">Hiện</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fa-brands fa-youtube"></i> YouTube:</label>
+                            <input type="text" name="youtube">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" name="showFooterYoutube" id="chk-yt">
+                                <label for="chk-yt">Hiện</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
             </div>
         </main>
     </div>
