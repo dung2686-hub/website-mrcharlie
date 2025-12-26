@@ -6,7 +6,7 @@
   "facebook": "",
   "tiktok": "",
   "youtube": "",
-  "showFooterZalo": true,
+  "showFooterZalo": false,
   "showFooterPhone": true,
   "showFooterEmail": true,
   "showFooterAddress": true,
