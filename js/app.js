@@ -73,10 +73,10 @@ function switchApp(index) {
         if (app.badFor) {
             note.innerHTML = app.badFor;
             note.style.display = 'block';
-            note.style.fontSize = '0.9rem';
-            note.style.marginTop = '10px';
-            note.style.fontStyle = 'italic';
-            note.style.opacity = '0.7';
+            note.style.fontSize = '1rem';
+            note.style.marginTop = '15px';
+            note.style.color = '#ccc'; // Clearer gray
+            note.style.opacity = '1'; // Full visibility
         } else {
             note.style.display = 'none';
         }
