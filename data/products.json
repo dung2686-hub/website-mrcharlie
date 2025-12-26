@@ -11,11 +11,12 @@
     },
     {
       "name": "Flow Auto_Runner",
-      "icon": "assets/logos/flowautorunner_icon.png",
+      "icon": "/assets/logos/flowautorunner_icon.png",
       "usage": "Tool tự động hóa quy trình workflow (Auto-Runner).",
       "goodFor": "Dân MMO, Automation, Tiết kiệm thời gian.",
-      "badFor": "Người thích làm thủ công.",
-      "link": "#"
+      "badFor": "Ứng dụng do cá nhân phát triển, hỗ trợ qua Zalo.",
+      "link": "#",
+      "isVisible": true
     }
   ]
 }
