@@ -6,7 +6,8 @@
       "usage": "App mình làm để dùng hằng ngày trên Windows – Lịch Âm Dương, ghi chú và nhắc việc.",
       "goodFor": "",
       "badFor": "Ứng dụng do cá nhân phát triển, hỗ trợ qua Zalo.",
-      "link": "/assets/releases/SetupLichAmDuong_v2.0_1766678516802.zip"
+      "link": "/assets/releases/SetupLichAmDuong_v2.0_1766678516802.zip",
+      "isVisible": true
     },
     {
       "name": "Flow Auto_Runner",
