@@ -300,6 +300,32 @@ body {
     background: transparent;
 }
 
+/* Fix Checkbox Alignment */
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Space between checkbox and text */
+    margin-top: 5px;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    width: 20px !important;
+    height: 20px !important;
+    margin: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.checkbox-wrapper label {
+    margin: 0 !important;
+    /* Override global margin */
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #ccc;
+    font-weight: normal;
+}
+
 .modal-footer {
     display: flex;
     justify-content: flex-end;
