@@ -16,7 +16,7 @@
       "goodFor": "Dân MMO, Automation, Tiết kiệm thời gian.",
       "badFor": "Ứng dụng do cá nhân phát triển, hỗ trợ qua Zalo.",
       "link": "https://chromewebstore.google.com/detail/flow-auto-runner/nminchcajodbkenicimkfckjgleednnj",
-      "isVisible": true
+      "isVisible": false
     }
   ]
 }
