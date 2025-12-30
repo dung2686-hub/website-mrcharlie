@@ -1,17 +1,17 @@
 {
-  "email": "",
-  "phone": "",
-  "address": "",
-  "zalo": "",
+  "email": "mrcharlie.ai@gmail.com",
+  "phone": "0988660809",
+  "address": "P. Thạnh Mỹ Tây, TP. Hồ Chí Minh, Việt Nam",
+  "zalo": "https://zalo.me/g/fnzwet194",
   "facebook": "",
   "tiktok": "",
   "youtube": "",
-  "showFooterZalo": false,
-  "showFooterPhone": false,
-  "showFooterEmail": false,
-  "showFooterAddress": false,
+  "showFooterZalo": true,
+  "showFooterPhone": true,
+  "showFooterEmail": true,
+  "showFooterAddress": true,
   "showFooterFacebook": false,
   "showFooterTikTok": false,
   "showFooterYoutube": false,
-  "slogan": ""
+  "slogan": "TOOL CÁ NHÂN, CHIA SẺ LẠI CHO AI CẦN"
 }
